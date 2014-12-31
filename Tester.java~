@@ -1,0 +1,8 @@
+import java.util.*;
+public class Tester{
+    public static void main(String[]args){
+	Player al = new Player();
+	al.roll();
+	    System.out.println(Arrays.toString(al.getDice()));
+    }
+}
