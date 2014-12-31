@@ -1,10 +1,13 @@
 import java.util.*;
 public class Board{
+    Random r = new Random();
     public Player[] Gamblers = new Player[4];
     public Board(){
 	for(int i = 0; i < 4; i++){
 	    Gamblers[i] = new Player();
 	}
+	highBid[1] = 1;
+	highBid[2] = 1;
     }
     public boolean believed(int a){
 	boolean liar = false;
@@ -19,23 +22,36 @@ public class Board{
     }
     
     public void playRound(){
-	int a = 0;
+	System.out.println("next round");
+	int a = r.nextInt(4) + 1;
 	for(int i = 0; i < 4; i++){
-	    System.out.println(""+i);
 	    Gamblers[i].roll();
 	}
-	for(int i = 0; believed(i%4); i++){
+	for(int i = a; believed(i%4); i++){
 	    a++;
-	    System.out.println("Player" + (i%4+1));
-	    Gamblers[i%4].bid(highBid[0], highBid[1]);
-	    if(Gamblers[i%4].getBid()[0] != -1){
-		highBid = Gamblers[i%4].getBid();
+	    if((i%4) > 0){
+		try{
+		    Thread.sleep(1000);
+		}catch(InterruptedException ex){
+		    Thread.currentThread().interrupt();
+		}
+		Gamblers[i%4].bidAI(highBid[0], highBid[1]);
+		if(Gamblers[i%4].getBid()[0] != -1){
+		    highBid = Gamblers[i%4].getBid();
+		}
+		System.out.println("Gambler "+ i%4 +" calls " + Gamblers[i%4].wordBid());
+	    }else{
+		System.out.println("your dice:"+ Arrays.toString(Gamblers[0].getDice()));
+		Gamblers[0].bid(highBid[0], highBid[1]);
+		if(Gamblers[i%4].getBid()[0] != -1){
+		    highBid = Gamblers[i%4].getBid();
+		}
+		System.out.println("you call " + Gamblers[i%4].wordBid());
 	    }
 	}
-	for(int i = 0; i < 4; i++){
-	    System.out.println("player"+ (i+1) +":"+ 
-			       Arrays.toString(Gamblers[i].
-			       getDice()));
+	System.out.println("Dice"+"\n"+"You:"+ Arrays.toString(Gamblers[0].getDice()));
+	for(int i = 1; i < 4; i++){
+	    System.out.println("Gambler"+ i +":"+ Arrays.toString(Gamblers[i].getDice()));
 	}
 	if(isLiar()){
 	    for(int i = 0; i < 4; i++){
@@ -46,15 +62,18 @@ public class Board{
 		Gamblers[a%4].giveMoney(pot, Gamblers[i]);
 	    } 
 	}
-	for(int i = 0; i < 4; i++){
-	    System.out.println("player"+(i+1)+":"+Gamblers[i].getCash());
-	}
 	for(int i = 0; i > 4; i++){
 	    Gamblers[i].reset();
 	}
+	highBid[0] = 1;
+	highBid[1] = 1;
+	System.out.println("You:"+Gamblers[0].getCash());
+	for(int i = 1; i < 4; i++){
+	    System.out.println("Gambler"+i+":"+Gamblers[i].getCash());
+	}
+	System.out.println("\n"+"\n"+"\n");
     }
-    
-    public int Controlled;
+
     public int[] highBid = new int[2];
     public boolean isLiar(){
 	int a = 0;
