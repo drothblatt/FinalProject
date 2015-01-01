@@ -83,5 +83,10 @@ public class Board{
 	return(a >= highBid[1]);
     }
     public double pot = 50.00;
+    public boolean isBroke(int a){
+	if(Gamblers[a].cash <= 0.00)
+	    return true;
+	return false;
+    }
 }
     
