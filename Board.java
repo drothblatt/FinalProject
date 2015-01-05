@@ -7,7 +7,7 @@ public class Board{
 	    Gamblers[i] = new Player();
 	}
 	highBid[1] = 1;
-	highBid[2] = 1;
+	highBid[0] = 1;
     }
     public boolean believed(int a){
 	boolean liar = false;
