@@ -1,14 +1,18 @@
 import java.util.*;
 public class Player{
     Random r = new Random();
-    private double cash;
-    private int[] dice = new int[6];
+    public double cash;
+    private int[] dice;
     public int[] bid = {1,1};
 
     public Player(){
-	cash = 500;   
+	cash = 500;
+	dice = new int[6];
     }
-
+    public Player(int a){
+	cash = 500;
+	dice = new int[6];
+    }
     public String getCash(){
 	return "$" + cash;
     }
