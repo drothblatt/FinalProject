@@ -88,6 +88,7 @@ public class Board{
 	System.out.println("\n"+"\n");
     }
 
+
     public int[] highBid = new int[2];
     public boolean isLiar(){
 	int a = 0;
