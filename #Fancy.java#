@@ -1,0 +1,12 @@
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.*; //needed for pane
+
+public class Converter extends JFrame implements ActionListener{
+    private Container pane;
+    private JButton b,clear;
+    private JLabel l,m;
+    private JTextField text, result;
+    private Container buttons;
+    private Container textyStuff;
+    private JRadioButton toC, toF;
