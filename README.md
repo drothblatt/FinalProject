@@ -37,10 +37,11 @@ Added variable amounts to the number of players and Dice.
 2015-01-06
 David:
 Established new constructor for Board class, which uses Scanner to allow user's to select (1) the number of opponents they will face and (2) the buy-in for the sitting, which remains the same for the entire sitting. 
-Made some changes to the AI in order to get it working for any input of oponents, not just 6.  
+Made some changes to the AI in order to get it working for any input of oponents, not just 6. 
 
 2015-01-06
 Randy and David (Class):
 Fixed AI to work with anywhere between 2 and 6 opponents. 
 This was primarily achieved by fixing bidAI method in Player class and playRound method in Board class.
-
+Randy:
+Added omnipotent bidding method, bidGod()

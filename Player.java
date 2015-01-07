@@ -159,4 +159,47 @@ public class Player{
 	    }
 	}
     }
+    public void bidGod(Player[] Gamblers, int[] highBid){
+	int a = 0;
+	for(int i = 0; i < Gamblers.length; i++){
+	    a+=Gamblers[i].howMany(highBid[0]);
+	}
+	if(a < highBid[1]){
+	    bid[0] = -1;
+	}else{
+	    if(a == highBid[1]){
+		int x = highBid[0] + 1;
+		boolean thisOne = false;
+		while(x < 7+highBid[0] && thisOne == false){
+		    if(x%7 == 0){
+			x++;
+		    }
+		    int a1 = 0;
+		    for(int i = 0; i < Gamblers.length; i++){
+			a1+=Gamblers[i].howMany(x%7);
+		    }
+		    if(x%7 > highBid[0]){
+			if(a1 >= highBid[0]){
+			    bid[0] = x%7;
+			    bid[1] = highBid[1];
+			    thisOne = true;
+			}
+		    }else{
+			if(a1 > highBid[0]){
+			    bid[0] = x%7;
+			    bid[1] = highBid[1] + 1;
+			    thisOne = true;
+			}
+		    }
+		    x++;
+		}
+		if(thisOne == false){
+		    bid[0] = -1;
+		}
+	    }else{
+		bid[0] = highBid[0];
+		bid[1] = highBid[1];
+	    }
+	}
+    }			
 }
