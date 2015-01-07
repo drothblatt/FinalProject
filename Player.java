@@ -13,15 +13,10 @@ public class Player{
 	cash = 500;
 	dice = new int[6];
     }
-    public String getCash(){
-	return "$" + cash;
+    public double getCash(){
+	return cash;
     }
 
-    /*
-      public void setCash(double amount){
-      cash = amount;
-      }
-    */
     public String wordBid(){
 	String s1 = "";
 	String s2 = "";
@@ -129,10 +124,10 @@ public class Player{
 	bid[0] = 0;
 	bid[1] = 0;
     }
-    public void bidAI(int faceVal, int dieCount){
+    public void bidAI(int faceVal, int dieCount, int size){
 	int a = howMany(faceVal) + 2;
 	for(int i = 0; i < dice.length; i++){
-	    if( r.nextInt(6) == 0)
+	    if( r.nextInt(size) == 0)
 		a++;
 	}
 	if(dieCount > a){
@@ -141,7 +136,7 @@ public class Player{
 	if(dieCount <= a){
 	    boolean other = true;
 	    for(int i = 0; i < 2; i++){
-		int c = r.nextInt(6) + 1;
+		int c = r.nextInt(size) + 1;
 		int x = 2 * howMany(c) + 2;
 		if(x > a){
 		    other = false;

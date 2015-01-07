@@ -2,25 +2,57 @@ import java.util.*;
 public class Board{
     Random r = new Random();
     public Player[] Gamblers;
+    public int[] highBid;
     public double buyin;
+
     public Board(){
-	Gamblers = new Player[4];
-	for(int i = 0; i < 4; i++){
-	    Gamblers[i] = new Player();
-	}
-	buyin = 50.00;
+        System.out.println("Select How Many Players You Want to Play Against (btwn 2 and 6)");
+	chooseOpponents();
+	System.out.println("Set The Buy-in For Each Round. Keep in Mind You Start With $500.00");
+	chooseBuyIn();
+	highBid = new int[2];
 	highBid[1] = 1;
 	highBid[0] = 1;
     }
-    public Board(int a){
-	Gamblers = new Player[a];
+
+    public void chooseOpponents(){
 	Scanner s = new Scanner(System.in);
-	for(int i = 0; i < a; i++){
-	    Gamblers[i] = new Player();
+	if (s.hasNextInt()){
+	    int opponents = s.nextInt();
+	    if (2 <= opponents && opponents <= 6){
+		Gamblers = new Player[opponents+1];
+		for(int i = 0; i < Gamblers.length; i++){
+		    Gamblers[i] = new Player();
+		}
+	    } else{
+		System.out.println("Invalid Number. Choose Between 2 and 6.");
+		chooseOpponents();
+	    }
+	} else{
+	    System.out.println("Oops, Problem. Must Input Integer.");
+	    if (s.hasNextLine()){	
+		chooseOpponents();
+	    }
 	}
-	System.out.println("What should be buy-in for each round?");
-	highBid[1] = 1;
-	highBid[0] = 1;
+    }
+
+    public void chooseBuyIn(){
+	Scanner s = new Scanner(System.in);
+	if (s.hasNextDouble()){
+	    double input = s.nextDouble();
+	    if (input > 0 && input <= 500){
+		buyin = input;
+	    } else{
+		System.out.println("Invalid Double. Keep It Positive And Below $500.00"); 
+		chooseBuyIn();
+	    }
+	} else{
+	    System.out.println("Oops, Something Went Wrong. " + 
+			       "Note That Buy-In Must Be An Integer Or Double.");
+	    if (s.hasNextLine()){
+		chooseBuyIn();
+	    }			 
+	}
     }
     
     public boolean believed(int a){
@@ -49,7 +81,7 @@ public class Board{
 		}catch(InterruptedException ex){
 		    Thread.currentThread().interrupt();
 		}
-		Gamblers[i%Gamblers.length].bidAI(highBid[0], highBid[1]);
+		Gamblers[i%Gamblers.length].bidAI(highBid[0], highBid[1],Gamblers.length);
 		if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 		    highBid = Gamblers[i%Gamblers.length].getBid();
 		}
@@ -69,11 +101,11 @@ public class Board{
 	}
 	if(isLiar()){
 	    for(int i = 0; i < Gamblers.length; i++){
-		Gamblers[i].giveMoney(pot, Gamblers[a%Gamblers.length]);
+		Gamblers[i].giveMoney(buyin, Gamblers[a%Gamblers.length]);
 	    }
 	}else{
 	   for(int i = 0; i < Gamblers.length; i++){
-		Gamblers[a%Gamblers.length].giveMoney(pot, Gamblers[i]);
+		Gamblers[a%Gamblers.length].giveMoney(buyin, Gamblers[i]);
 	    } 
 	}
 	for(int i = 0; i > Gamblers.length; i++){
@@ -87,8 +119,6 @@ public class Board{
 	}
 	System.out.println("\n"+"\n");
     }
-
-    public int[] highBid = new int[2];
     public boolean isLiar(){
 	int a = 0;
 	for(int i = 0; i<4; i++){
@@ -97,7 +127,7 @@ public class Board{
 	return(a >= highBid[1]);
     }
     public boolean isBroke(int a){
-	if(Gamblers[a].cash <= 0.00)
+	if(Gamblers[a].getCash() <= 0.00)
 	    return true;
 	return false;
     }
