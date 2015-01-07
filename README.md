@@ -32,3 +32,8 @@ added isBroke() boolean, did not implement.
 1.5.2015
 Randy:
 Added variable amounts to the number of players and Dice.
+
+2015-01-06
+David:
+Established new constructor for Board class, which uses Scanner to allow user's to select (1) the number of opponents they will face and (2) the buy-in for the sitting, which remains the same for the entire sitting. 
+Made some changes to the AI in order to get it working for any input of oponents, not just 6.  
