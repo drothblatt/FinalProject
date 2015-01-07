@@ -91,13 +91,12 @@ public class Player{
 		bid = b;
 		return true;
 	    }
-	}else{
+	}
 	if(b[0] == -1){
 	    bid = b;
 	    System.out.println("liar");
 	    return true;
 	}
-}
 	bid[0] = -1;
 	System.out.println("invalid bid,<liar called>");
 	return false;

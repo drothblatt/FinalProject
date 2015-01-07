@@ -57,7 +57,7 @@ public class Board{
     
     public boolean believed(int a){
 	boolean belief = false;
-	for(int i = 0; i < 4; i++){
+	for(int i = 0; i < Gamblers.length; i++){
 	    if(i != a){
 		if(Gamblers[i].getBid()[0] != -1){
 		    belief = true;
@@ -85,15 +85,18 @@ public class Board{
 		if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 		    highBid = Gamblers[i%Gamblers.length].getBid();
 		}
-		System.out.println("Gambler "+ i%Gamblers.length +" calls " + Gamblers[i%4].wordBid());
+		System.out.println("Gambler "+ i%Gamblers.length +" calls " + Gamblers[i%Gamblers.length].wordBid());
 	    }else{
 		System.out.println("your dice:"+ Arrays.toString(Gamblers[0].getDice()));
 		Gamblers[0].bid(highBid[0], highBid[1]);
 		if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
-		    highBid = Gamblers[i%Gamblers.length].getBid();
+		    highBid = Gamblers[0].getBid();
 		}
 		System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
 	    }
+	    System.out.println(""+i%Gamblers.length);
+	    System.out.println(Arrays.toString(highBid));
+	    System.out.println(Arrays.toString(Gamblers[i%Gamblers.length].getBid()));
 	}
 	System.out.println("Dice"+"\n"+"You:"+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
@@ -121,7 +124,7 @@ public class Board{
     }
     public boolean isLiar(){
 	int a = 0;
-	for(int i = 0; i<4; i++){
+	for(int i = 0; i < Gamblers.length; i++){
 	    a+=Gamblers[i].howMany(highBid[0]);
 	}
 	return(a >= highBid[1]);
