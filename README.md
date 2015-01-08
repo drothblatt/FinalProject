@@ -45,3 +45,7 @@ Fixed AI to work with anywhere between 2 and 6 opponents.
 This was primarily achieved by fixing bidAI method in Player class and playRound method in Board class.
 Randy:
 Added omnipotent bidding method, bidGod()
+
+2015-01-06
+Randy(Class):
+Added dumb bidding method, bidDumb().
