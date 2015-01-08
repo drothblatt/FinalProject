@@ -50,3 +50,4 @@ Added omnipotent bidding method, bidGod()
 Randy(Class):
 Added dumb bidding method, bidDumb().
 Removed checks from playRound().
+Added dollar sign to String that returns cash amount b/c it's cash
