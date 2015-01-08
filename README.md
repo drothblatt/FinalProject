@@ -49,3 +49,4 @@ Added omnipotent bidding method, bidGod()
 2015-01-06
 Randy(Class):
 Added dumb bidding method, bidDumb().
+Removed checks from playRound().

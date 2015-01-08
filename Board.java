@@ -75,12 +75,12 @@ public class Board{
 	}
 	for(int i = a; believed(i%Gamblers.length); i++){
 	    a++;
-	    if((i%Gamblers.length) > 0){
-		try{
+	    try{
 		    Thread.sleep(1000);
 		}catch(InterruptedException ex){
 		    Thread.currentThread().interrupt();
 		}
+	    if((i%Gamblers.length) > 0){
 		Gamblers[i%Gamblers.length].bidAI(highBid[0], highBid[1],Gamblers.length);
 		if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 		    highBid = Gamblers[i%Gamblers.length].getBid();
@@ -94,9 +94,6 @@ public class Board{
 		}
 		System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
 	    }
-	    System.out.println(""+i%Gamblers.length);
-	    System.out.println(Arrays.toString(highBid));
-	    System.out.println(Arrays.toString(Gamblers[i%Gamblers.length].getBid()));
 	}
 	System.out.println("Dice"+"\n"+"You:"+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
