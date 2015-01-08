@@ -70,7 +70,7 @@ public class Player{
 	cash -= amount;
 	other.addCash(amount);
     }
-    
+    /*
     public int[] bid(){
 	int[] b = new int[2];
 	System.out.println("enter face value (bid '-1' for liar)");
@@ -83,6 +83,21 @@ public class Player{
 	bid = b;
 	return b;
     }
+    */
+
+    public int[] bid(){
+	int[] b = new int[2];
+	System.out.println("enter face value (bid '-1' for liar)");
+	Scanner s = new Scanner(System.in);
+	b[0]=s.nextInt();
+	if(b[0] != -1){
+	    System.out.println("choose number of dice");
+	    b[1] = s.nextInt();
+	}
+	bid = b;
+	return b;
+    }
+    
 
     public boolean bid(int faceVal, int dieCount){
 	int[] b = bid();
@@ -198,7 +213,7 @@ public class Player{
 		}
 	    }else{
 		bid[0] = highBid[0];
-		bid[1] = highBid[1];
+		bid[1] = highBid[1] + 1;
 	    }
 	}
     }

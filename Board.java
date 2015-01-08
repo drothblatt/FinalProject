@@ -81,7 +81,7 @@ public class Board{
 		    Thread.currentThread().interrupt();
 		}
 	    if((i%Gamblers.length) > 0){
-		Gamblers[i%Gamblers.length].bidAI(highBid[0], highBid[1],Gamblers.length);
+		Gamblers[i%Gamblers.length].bidGod(Gamblers, highBid/*highBid[0], highBid[1],Gamblers.length*/);
 		if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 		    highBid = Gamblers[i%Gamblers.length].getBid();
 		}
@@ -95,9 +95,9 @@ public class Board{
 		System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
 	    }
 	}
-	System.out.println("Dice"+"\n"+"You:"+ Arrays.toString(Gamblers[0].getDice()));
+	System.out.println("Dice"+"\n"+"You: $"+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
-	    System.out.println("Gambler"+ i +":"+ Arrays.toString(Gamblers[i].getDice()));
+	    System.out.println("Gambler"+ i +": $"+ Arrays.toString(Gamblers[i].getDice()));
 	}
 	if(isLiar()){
 	    for(int i = 0; i < Gamblers.length; i++){

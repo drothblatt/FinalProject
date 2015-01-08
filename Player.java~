@@ -70,7 +70,7 @@ public class Player{
 	cash -= amount;
 	other.addCash(amount);
     }
-    
+    /*
     public int[] bid(){
 	int[] b = new int[2];
 	System.out.println("enter face value (bid '-1' for liar)");
@@ -83,6 +83,25 @@ public class Player{
 	bid = b;
 	return b;
     }
+    */
+
+    public int[] bid(){
+	int[] b = new int[2];
+	System.out.println("enter face value (bid '-1' for liar)");
+	Scanner s = new Scanner(System.in);
+	try{
+		String userBid = s.nextLine();
+		
+	
+	b[0]=s.nextInt();
+	if(b[0] != -1){
+	    System.out.println("choose number of dice");
+	    b[1] = s.nextInt();
+	}
+	bid = b;
+	return b;
+    }
+    
 
     public boolean bid(int faceVal, int dieCount){
 	int[] b = bid();
@@ -91,12 +110,13 @@ public class Player{
 		bid = b;
 		return true;
 	    }
-	}
+	}else{
 	if(b[0] == -1){
 	    bid = b;
 	    System.out.println("liar");
 	    return true;
 	}
+}
 	bid[0] = -1;
 	System.out.println("invalid bid,<liar called>");
 	return false;
@@ -155,6 +175,62 @@ public class Player{
 	    if(other){
 		bid[0] = faceVal;
 		bid[1] = (dieCount + 1);
+	    }
+	}
+    }
+    public void bidGod(Player[] Gamblers, int[] highBid){
+	int a = 0;
+	for(int i = 0; i < Gamblers.length; i++){
+	    a+=Gamblers[i].howMany(highBid[0]);
+	}
+	if(a < highBid[1]){
+	    bid[0] = -1;
+	}else{
+	    if(a == highBid[1]){
+		int x = highBid[0] + 1;
+		boolean thisOne = false;
+		while(x < 7+highBid[0] && thisOne == false){
+		    if(x%7 == 0){
+			x++;
+		    }
+		    int a1 = 0;
+		    for(int i = 0; i < Gamblers.length; i++){
+			a1+=Gamblers[i].howMany(x%7);
+		    }
+		    if(x%7 > highBid[0]){
+			if(a1 >= highBid[0]){
+			    bid[0] = x%7;
+			    bid[1] = highBid[1];
+			    thisOne = true;
+			}
+		    }else{
+			if(a1 > highBid[0]){
+			    bid[0] = x%7;
+			    bid[1] = highBid[1] + 1;
+			    thisOne = true;
+			}
+		    }
+		    x++;
+		}
+		if(thisOne == false){
+		    bid[0] = -1;
+		}
+	    }else{
+		bid[0] = highBid[0];
+		bid[1] = highBid[1] + 1;
+	    }
+	}
+    }
+    public void bidDumb(int[] highBid){
+	if(r.nextInt(10) < highBid[1]){
+	    bid[0] = -1;
+	}else{
+	    if(r.nextInt(2) == 1){
+		bid[0] = highBid[0];
+		bid[1] = highBid[1] + r.nextInt(2) + 1;
+	    }else{
+		bid[0] = highBid[0]%6 + 1;
+		bid[1] = highBid[1] + r.nextInt(1) + 1;
 	    }
 	}
     }
