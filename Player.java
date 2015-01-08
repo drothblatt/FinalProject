@@ -201,5 +201,18 @@ public class Player{
 		bid[1] = highBid[1];
 	    }
 	}
-    }			
+    }
+    public void bidDumb(int[] highBid){
+	if(r.nextInt(10) < highBid[1]){
+	    bid[0] = -1;
+	}else{
+	    if(r.nextInt(2) == 1){
+		bid[0] = highBid[0];
+		bid[1] = highBid[1] + r.nextInt(2) + 1;
+	    }else{
+		bid[0] = highBid[0]%6 + 1;
+		bid[1] = highBid[1] + r.nextInt(1) + 1;
+	    }
+	}
+    }
 }
