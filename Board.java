@@ -95,9 +95,9 @@ public class Board{
 		System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
 	    }
 	}
-	System.out.println("Dice"+"\n"+"You: $"+ Arrays.toString(Gamblers[0].getDice()));
+	System.out.println("Dice"+"\n"+"You: "+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
-	    System.out.println("Gambler"+ i +": $"+ Arrays.toString(Gamblers[i].getDice()));
+	    System.out.println("Gambler"+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
 	}
 	if(isLiar()){
 	    for(int i = 0; i < Gamblers.length; i++){
@@ -113,9 +113,9 @@ public class Board{
 	}
 	highBid[0] = 1;
 	highBid[1] = 1;
-	System.out.println("You:"+Gamblers[0].getCash());
+	System.out.println("You: $"+Gamblers[0].getCash());
 	for(int i = 1; i < Gamblers.length; i++){
-	    System.out.println("Gambler"+i+":"+Gamblers[i].getCash());
+	    System.out.println("Gambler"+i+": $"+Gamblers[i].getCash());
 	}
 	System.out.println("\n"+"\n");
     }
