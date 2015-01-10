@@ -139,8 +139,8 @@ public class Player{
 	return dice;
     }
     public void reset(){
-	bid[0] = 0;
-	bid[1] = 0;
+	bid[0] = 1;
+	bid[1] = 1;
     }
     public void bidAI(int faceVal, int dieCount, int size){
 	int a = howMany(faceVal) + 2;
