@@ -4,6 +4,12 @@ void setup() {
     size(800,800);
     bg = loadImage("table.jpg");
     background(bg);
+    
+    fill(255,102,0);
+    ellipse(400,400,140,140);
+    img = loadImage("dice.png");
+    image(img,340,345,img.width/2.5,img.height/2.5);
+    /*
     int opponents = 6;
     for (int i = 0; i < opponents; i++){
       img = loadImage("dice.jpeg");
@@ -21,5 +27,6 @@ void setup() {
         image(img,600,400,img.width/2,img.height/2);
       }
     }
+    */
 }
           
