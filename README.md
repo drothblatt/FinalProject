@@ -59,6 +59,5 @@ David(Class): Worked on
 2015-01-10:
 Randy:
 Removed broke players from rounds.
-
-2015-01-11:
-David: Updated work on processing. Figured out how to add text and cool buttons (CP5) and researched how to utilize processing.
+David: 
+Updated work on processing. Figured out how to add text and cool buttons (CP5) and researched how to utilize processing.
