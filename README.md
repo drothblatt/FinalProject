@@ -39,19 +39,26 @@ David:
 Established new constructor for Board class, which uses Scanner to allow user's to select (1) the number of opponents they will face and (2) the buy-in for the sitting, which remains the same for the entire sitting. 
 Made some changes to the AI in order to get it working for any input of oponents, not just 6. 
 
-2015-01-06
+2015-01-07
 Randy and David (Class):
 Fixed AI to work with anywhere between 2 and 6 opponents. 
 This was primarily achieved by fixing bidAI method in Player class and playRound method in Board class.
 Randy:
 Added omnipotent bidding method, bidGod()
 
-2015-01-06
+2015-01-08
 Randy(Class):
 Added dumb bidding method, bidDumb().
 Removed checks from playRound().
 Added dollar sign to String that returns cash amount b/c it's cash
 
-2015-1-10
+2015-01-09:
+Randy(Class): Worked on getting rid of players with no cash
+David(Class): Worked on 
+
+2015-01-10:
 Randy:
 Removed broke players from rounds.
+
+2015-01-11:
+David: Updated work on processing. Figured out how to add text and cool buttons (CP5) and researched how to utilize processing.
