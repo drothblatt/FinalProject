@@ -1,7 +1,7 @@
   import controlP5.*;
   
   ControlP5 cp5;
-  RadioButton r;
+  //RadioButton r;
   String textValue = "";
 
   
@@ -30,7 +30,7 @@
     PFont font = createFont("arial",20);
 
     cp5 = new ControlP5(this);
-    
+    /*
     r = cp5.addRadioButton("radioButton")
            .setPosition(175,250)
            .setSize(40,20)
@@ -53,6 +53,7 @@
          t.captionLabel().style().backgroundWidth = 45;
          t.captionLabel().style().backgroundHeight = 13;
        }
+       */
                
                  
          cp5.addButton("Two")
@@ -82,9 +83,17 @@
              ;
 
   }
-  public void clear() {
-  cp5.get(Textfield.class,"input").clear();
-}
+  public void Two() {
+    PImage img;
+    fill(255,102,0);
+    ellipse(300,400,140,140);
+    ellipse(500,400,140,140);
+    img = loadImage("dice.png");
+    image(img,240,345,img.width/2.5,img.height/2.5);
+    image(img,440,345,img.width/2.5,img.height/2.5);
+    
+    
+  }
   
   void draw(){
     PImage img;
