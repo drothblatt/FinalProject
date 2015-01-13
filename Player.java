@@ -11,7 +11,7 @@ public class Player{
     }
     public Player(int a){
 	cash = 500;
-	dice = new int[6];
+	dice = new int[a];
     }
     public double getCash(){
 	return cash;
@@ -143,7 +143,7 @@ public class Player{
 	bid[1] = 1;
     }
     public void bidAI(int faceVal, int dieCount, int size){
-	int a = howMany(faceVal) + 2;
+	int a = howMany(faceVal) + (dice.length/4);
 	for(int i = 0; i < dice.length; i++){
 	    if( r.nextInt(size) == 0)
 		a++;

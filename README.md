@@ -61,3 +61,7 @@ Randy:
 Removed broke players from rounds.
 David: 
 Updated work on processing. Figured out how to add text and cool buttons (CP5) and researched how to utilize processing.
+
+2015-01-13
+Randy(Class)
+Fixed  cycling error (I think)

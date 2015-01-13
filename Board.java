@@ -6,10 +6,6 @@ public class Board{
     public double buyin;
 
     public Board(){
-        System.out.println("Select How Many Players You Want to Play Against (btwn 2 and 6)");
-	chooseOpponents();
-	System.out.println("Set The Buy-in For Each Round. Keep in Mind You Start With $500.00");
-	chooseBuyIn();
 	highBid = new int[2];
 	highBid[1] = 1;
 	highBid[0] = 1;
@@ -21,8 +17,10 @@ public class Board{
 	    int opponents = s.nextInt();
 	    if (2 <= opponents && opponents <= 6){
 		Gamblers = new Player[opponents+1];
+		System.out.println("how many dice per player? (5-8 recomended)");
+		int f = s.nextInt();
 		for(int i = 0; i < Gamblers.length; i++){
-		    Gamblers[i] = new Player();
+		    Gamblers[i] = new Player(f);
 		}
 	    } else{
 		System.out.println("Invalid Number. Choose Between 2 and 6.");
@@ -35,7 +33,7 @@ public class Board{
 	    }
 	}
     }
-
+    
     public void chooseBuyIn(){
 	Scanner s = new Scanner(System.in);
 	if (s.hasNextDouble()){
@@ -54,12 +52,45 @@ public class Board{
 	    }			 
 	}
     }
-    
+    public void playGame(){
+	 System.out.println("Select How Many Players You Want to Play Against (btwn 2 and 6)");
+	chooseOpponents();
+	System.out.println("Set The Buy-in For Each Round. Keep in Mind You Start With $500.00");
+	chooseBuyIn();
+	highBid = new int[2];
+	highBid[1] = 1;
+	highBid[0] = 1;
+	Scanner s = new Scanner(System.in);
+	boolean winner = false;
+	while(winner == false){
+	    if(hasCash(0)){
+		boolean others = false;
+		for(int i = 1; i < Gamblers.length; i++){
+		    if(hasCash(i))
+			others = true;
+		}
+		if(others)
+		    playRound();
+		else{
+		    System.out.println("You win");
+		    winner = true;
+		}
+	    }else{
+		System.out.println("You loose");
+		winner = true;
+	    }
+	}
+	System.out.println("Game over"+"\n"+"Play Again?(Y/N)");
+	String b = s.next();
+	if(b == "Y" || b == "y"){
+	    playGame();
+	}
+    }
     public boolean believed(int a){
 	boolean belief = false;
 	for(int i = 0; i < Gamblers.length; i++){
-	    if(i != a){
-		if(Gamblers[i].getBid()[0] != -1 && hasCash(i)){
+	    if(hasCash(i) && i != a){
+		if(Gamblers[i].getBid()[0] != -1){
 		    belief = true;
 		}
 	    }
@@ -68,9 +99,13 @@ public class Board{
     }
     
     public void playRound(){
-	System.out.println("next round");
 	int a = r.nextInt(Gamblers.length) + 1;
-	
+	for(int i = 0; i > Gamblers.length; i++){
+	    Gamblers[i].reset();
+	}
+	highBid[0] = 1;
+	highBid[1] = 1;
+	System.out.println("next round");
 	for(int i = 0; i < Gamblers.length; i++){
 	    Gamblers[i].roll();
 	}
@@ -78,7 +113,7 @@ public class Board{
 	    a++;
 	    if(hasCash(i%Gamblers.length)){
 		try{
-		    Thread.sleep(r.nextInt(1000)+500);
+		    Thread.sleep(r.nextInt(1500) + 500);
 		}catch(InterruptedException ex){
 		    Thread.currentThread().interrupt();
 		}
@@ -97,26 +132,26 @@ public class Board{
 		    System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
 		}
 	    }
-	    if(hasCash((i+1)%Gamblers.length) == false)
-		i++;
 	}
+
 	System.out.println("Dice"+"\n"+"You: "+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
 	    if(hasCash(i))
 		System.out.println("Gambler"+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
 	}
+
 	if(isLiar()){
 	    for(int i = 0; i < Gamblers.length; i++){
-		if(hasCash(i)){
+		if(hasCash(i))
 		    Gamblers[i].giveMoney(buyin, Gamblers[a%Gamblers.length]);
-		}
 	    }
 	}else{
 	    for(int i = 0; i < Gamblers.length; i++){
 		if(hasCash(i))
-		    Gamblers[a%Gamblers.length].giveMoney(buyin, Gamblers[i]);	    
-	    }
+		    Gamblers[a%Gamblers.length].giveMoney(buyin, Gamblers[i]);
+	    } 
 	}
+
 	for(int i = 0; i > Gamblers.length; i++){
 	    Gamblers[i].reset();
 	}
@@ -129,6 +164,8 @@ public class Board{
 	}
 	System.out.println("\n"+"\n");
     }
+
+
     public boolean isLiar(){
 	int a = 0;
 	for(int i = 0; i < Gamblers.length; i++){
