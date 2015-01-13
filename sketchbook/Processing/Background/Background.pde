@@ -3,10 +3,11 @@
   ControlP5 cp5;
   //RadioButton r;
   String textValue = "";
+  RectButton Two, Three, Four, Five, Six;
 
   
   void setup() {
-    PImage bg;
+    PImage bg, img;
     PFont f1, f2;
     size(800,800);
     noStroke();
@@ -22,8 +23,14 @@
     f2 = createFont("Arial",16,true); 
     textFont(f2);       
     textAlign(CENTER);
-    text("Please Select Number Of Opponents:",400,200);
+    text("Please Select Number Of Opponents:",400,280);
     text("by Randy Higgins & David Rothblatt",400,100);
+    text("You",400,695);
+    
+    fill(255,102,0);
+    ellipse(400,600,140,140);
+    img = loadImage("dice.png");
+    image(img,340,545,img.width/2.5,img.height/2.5); 
     
     
     
@@ -58,49 +65,47 @@
                  
          cp5.addButton("Two")
              .setValue(0)
-             .setPosition(300,500)
-             .setSize(200,19)
+             .setPosition(300,300)
+             .setSize(200,39)
              ;
          cp5.addButton("Three")
              .setValue(100)
-             .setPosition(300,520)
-             .setSize(200,19)
+             .setPosition(300,340)
+             .setSize(200,39)
              ;
          cp5.addButton("Four")
-             .setPosition(300,540)
-             .setSize(200,19)
+             .setPosition(300,380)
+             .setSize(200,39)
              .setValue(0)
              ;
          cp5.addButton("Five")
-             .setPosition(300,560)
-             .setSize(200,19)
+             .setPosition(300,420)
+             .setSize(200,39)
              .setValue(0)
              ;
          cp5.addButton("Six")
-             .setPosition(300,580)
-             .setSize(200,19)
+             .setPosition(300,460)
+             .setSize(200,39)
              .setValue(0)
              ;
-
+    color buttoncolor = color(12,27,166);
+    color highlight = color(153);
+    Two = new RectButton(200,20,100,buttoncolor,highlight);
   }
   public void Two() {
-    PImage img;
-    fill(255,102,0);
-    ellipse(300,400,140,140);
-    ellipse(500,400,140,140);
-    img = loadImage("dice.png");
-    image(img,240,345,img.width/2.5,img.height/2.5);
-    image(img,440,345,img.width/2.5,img.height/2.5);
-    
-    
+      //activateBy(cp5.RELEASE);
+      //if (isOn){
+      PImage img;
+      fill(255,102,0);
+      ellipse(300,400,140,140);
+      ellipse(500,400,140,140);
+      img = loadImage("dice.png");
+      image(img,240,345,img.width/2.5,img.height/2.5);
+      image(img,440,345,img.width/2.5,img.height/2.5);
+      //}
   }
   
   void draw(){
-    PImage img;
-    fill(255,102,0);
-    ellipse(400,400,140,140);
-    img = loadImage("dice.png");
-    image(img,340,345,img.width/2.5,img.height/2.5);
     /*
     int opponents = 6;
     for (int i = 0; i < opponents; i++){
