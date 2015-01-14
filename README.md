@@ -65,3 +65,7 @@ Updated work on processing. Figured out how to add text and cool buttons (CP5) a
 2015-01-13
 Randy(Class)
 Fixed  cycling error (I think)
+
+2015-01-14
+Randy(Class)
+Implemented hardMode? to choose between bidAI() and bidGod()

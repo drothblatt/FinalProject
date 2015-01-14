@@ -19,8 +19,11 @@ public class Board{
 		Gamblers = new Player[opponents+1];
 		System.out.println("how many dice per player? (5-8 recomended)");
 		int f = s.nextInt();
+		System.out.println("Hard mode on?(Y/N)");
+		String next = s.next();
+		boolean hardMode = (next == "Y" || next == "y" || next == "yes" || next == "Yes");
 		for(int i = 0; i < Gamblers.length; i++){
-		    Gamblers[i] = new Player(f);
+		    Gamblers[i] = new Player(f, hardMode);
 		}
 	    } else{
 		System.out.println("Invalid Number. Choose Between 2 and 6.");
@@ -53,7 +56,7 @@ public class Board{
 	}
     }
     public void playGame(){
-	 System.out.println("Select How Many Players You Want to Play Against (btwn 2 and 6)");
+	System.out.println("Select How Many Players You Want to Play Against (btwn 2 and 6)");
 	chooseOpponents();
 	System.out.println("Set The Buy-in For Each Round. Keep in Mind You Start With $500.00");
 	chooseBuyIn();
@@ -118,7 +121,7 @@ public class Board{
 		    Thread.currentThread().interrupt();
 		}
 		if((i%Gamblers.length) > 0){
-		    Gamblers[i%Gamblers.length].bidAI(highBid[0], highBid[1],Gamblers.length);
+		    Gamblers[i%Gamblers.length].bidGod(Gamblers, highBid);
 		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 			highBid = Gamblers[i%Gamblers.length].getBid();
 		    }
@@ -140,7 +143,7 @@ public class Board{
 		System.out.println("Gambler"+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
 	}
 
-	if(isLiar()){
+	if(isLiar(a%Gamblers.length)){
 	    for(int i = 0; i < Gamblers.length; i++){
 		if(hasCash(i))
 		    Gamblers[i].giveMoney(buyin, Gamblers[a%Gamblers.length]);
@@ -166,12 +169,12 @@ public class Board{
     }
 
 
-    public boolean isLiar(){
+    public boolean isLiar(int z){
 	int a = 0;
 	for(int i = 0; i < Gamblers.length; i++){
-	    a+=Gamblers[i].howMany(highBid[0]);
+	    a+=Gamblers[i].howMany(Gamblers[z].getBid()[0]);
 	}
-	return(a >= highBid[1]);
+	return(a >= Gamblers[z].getBid()[1]);
     }
     public boolean hasCash(int a){
 	if(Gamblers[a].getCash() > 0.00)
