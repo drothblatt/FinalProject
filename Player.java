@@ -148,8 +148,8 @@ public class Player{
     }
     public void bidAI(int faceVal, int dieCount, int size){
 	int a = howMany(faceVal) + (dice.length/4);
-	for(int i = 0; i < dice.length; i++){
-	    if( r.nextInt(size) == 0)
+	for(int i = 0; i < (size - 2) * dice.length; i++){
+	    if(r.nextInt(6) == 0)
 		a++;
 	}
 	if(dieCount > a){
