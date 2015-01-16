@@ -92,9 +92,15 @@ public class Board{
     public boolean believed(int a){
 	boolean belief = false;
 	for(int i = 0; i < Gamblers.length; i++){
-	    if(hasCash(i) && i != a){
+	    if(i == a){
+		int d = 69;
+	    }else{
 		if(Gamblers[i].getBid()[0] != -1){
-		    belief = true;
+		    if(hasCash(i)){
+			belief = true;
+		    }
+		}else{
+		    System.out.println("Gambler" + i + Arrays.toString(Gamblers[i].getBid()));
 		}
 	    }
 	}
@@ -112,6 +118,7 @@ public class Board{
 	for(int i = 0; i < Gamblers.length; i++){
 	    Gamblers[i].roll();
 	}
+	System.out.println(believed(a%Gamblers.length));
 	for(int i = a; believed(i%Gamblers.length); i++){
 	    a++;
 	    if(hasCash(i%Gamblers.length)){
