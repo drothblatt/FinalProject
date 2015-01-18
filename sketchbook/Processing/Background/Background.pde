@@ -72,8 +72,17 @@ void draw(){
 }
   
 void mouseClicked(){
+    if (nOpponents == 0){
+    choosingOpponents();
+    } else if (nOpponents > 0 && nDice == 0){
+      choosingDice();
+    } else{
+      choosingDifficulty();
+    } 
+}
+
+void choosingOpponents(){
     if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 200 && mouseY <= 240){
-      fill(51);
       nOpponents = 2;
     } else if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 250 && mouseY <= 290){
       nOpponents = 3;
@@ -84,9 +93,35 @@ void mouseClicked(){
     } else if (mouseX >= 300 && mouseX <= 500 && mouseY >= 400 && mouseY <= 440){
       nOpponents = 6;
     }
-    System.out.println("Newest Variable");
+    System.out.println("Opponents:");
     System.out.println(nOpponents);
-  }
+}
+
+void choosingDice(){
+  if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 200 && mouseY <= 240){
+      nDice = 5;
+    } else if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 250 && mouseY <= 290){
+      nDice = 6;
+    } else if (mouseX >= 300 && mouseX <= 500 && mouseY >= 300 && mouseY <= 340){
+      nDice = 7;
+    } else if (mouseX >= 300 && mouseX <= 500 && mouseY >= 350 && mouseY <= 390){
+      nDice = 8;
+    }
+    System.out.println("Dice:");
+    System.out.println(nDice);
+}
+
+void choosingDifficulty(){
+    if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 200 && mouseY <= 240){
+      nDifficulty = 1;
+    } else if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 250 && mouseY <= 290){
+      nDifficulty = 2;
+    } 
+    System.out.println("Difficulty:");
+    System.out.println(nDifficulty);
+}
+  
+    
 
  // void draw(){
     /*
