@@ -1,11 +1,9 @@
-  import controlP5.*;
-  
-  ControlP5 cp5;
-  //RadioButton r;
-  String textValue = "";
-  RectButton Two, Three, Four, Five, Six;
+int nOpponents;
+int nDice;
+int nCash;
+int nDifficulty;
+int nBuyIn;
 
-  
   void setup() {
     PImage bg, img;
     PFont f1, f2;
@@ -23,7 +21,7 @@
     f2 = createFont("Arial",16,true); 
     textFont(f2);       
     textAlign(CENTER);
-    text("Please Select Number Of Opponents:",400,280);
+    text("Please Select Number Of Opponents:",400,180);
     text("by Randy Higgins & David Rothblatt",400,100);
     text("You",400,695);
     
@@ -31,80 +29,52 @@
     ellipse(400,600,140,140);
     img = loadImage("dice.png");
     image(img,340,545,img.width/2.5,img.height/2.5); 
-    
-    
-    
-    PFont font = createFont("arial",20);
 
-    cp5 = new ControlP5(this);
-    /*
-    r = cp5.addRadioButton("radioButton")
-           .setPosition(175,250)
-           .setSize(40,20)
-           .setColorForeground(color(120))
-           .setColorActive(color(255))
-           .setColorLabel(color(255))
-           .setItemsPerRow(5)
-           .setSpacingColumn(50)
-           .addItem("2",1)
-           .addItem("3",2)
-           .addItem("4",3)
-           .addItem("5",4)
-           .addItem("6",5)
-           ;
-       
-       for(Toggle t:r.getItems()) {
-         t.captionLabel().setColorBackground(color(140,180));
-         t.captionLabel().style().moveMargin(-7,0,0,-3);
-         t.captionLabel().style().movePadding(7,0,0,3);
-         t.captionLabel().style().backgroundWidth = 45;
-         t.captionLabel().style().backgroundHeight = 13;
-       }
-       */
-               
-                 
-         cp5.addButton("Two")
-             .setValue(0)
-             .setPosition(300,300)
-             .setSize(200,39)
-             ;
-         cp5.addButton("Three")
-             .setValue(100)
-             .setPosition(300,340)
-             .setSize(200,39)
-             ;
-         cp5.addButton("Four")
-             .setPosition(300,380)
-             .setSize(200,39)
-             .setValue(0)
-             ;
-         cp5.addButton("Five")
-             .setPosition(300,420)
-             .setSize(200,39)
-             .setValue(0)
-             ;
-         cp5.addButton("Six")
-             .setPosition(300,460)
-             .setSize(200,39)
-             .setValue(0)
-             ;
-    color buttoncolor = color(12,27,166);
-    color highlight = color(153);
-    Two = new RectButton(200,20,100,buttoncolor,highlight);
+    PFont font = createFont("arial",20);
+    
+    textAlign(CENTER);
+    textSize(22);
+    strokeWeight(5);
+    int z = 200; // starting point for buttons (height)
+    for (int i = 0; i < 5; i++){
+      fill(14,19,158);
+      rect(300,z,200,40);
+      z += 50;
+    }
+    fill(255);
+    text("Two", 400,230);
+    text("Three", 400,280);
+    text("Four", 400,330);
+    text("Five", 400,380);
+    text("Six", 400,430);
   }
-  public void Two() {
-      //activateBy(cp5.RELEASE);
-      //if (isOn){
-      PImage img;
-      fill(255,102,0);
-      ellipse(300,400,140,140);
-      ellipse(500,400,140,140);
-      img = loadImage("dice.png");
-      image(img,240,345,img.width/2.5,img.height/2.5);
-      image(img,440,345,img.width/2.5,img.height/2.5);
-      //}
-  }
+
   
+void mouseClicked(){
+    if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 200 && mouseY <= 240){
+      nOpponents = 2;
+    } else if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 250 && mouseY <= 290){
+      nOpponents = 3;
+    } else if (mouseX >= 300 && mouseX <= 500 && mouseY >= 300 && mouseY <= 340){
+      nOpponents = 4;
+    } else if (mouseX >= 300 && mouseX <= 500 && mouseY >= 350 && mouseY <= 390){
+      nOpponents = 5;
+    } else if (mouseX >= 300 && mouseX <= 500 && mouseY >= 400 && mouseY <= 440){
+      nOpponents = 6;
+    }
+    System.out.println("Newest Variable");
+    System.out.println(nOpponents);
+  }
+  /*
+  else if (stage == 1){
+    if (mouseX <= 210 && mouseX >= 10 && mouseY <= 390 && mouseY >= 290){
+      stage = 0;
+      resetCube();
+      checkSolve = false;
+    }
+  }  
+}
+*/
   void draw(){
     /*
     int opponents = 6;
@@ -126,6 +96,21 @@
     }
     */
   }
+  
+    /*
+  public void Two() {
+      //activateBy(cp5.RELEASE);
+      //if (isOn){
+      PImage img;
+      fill(255,102,0);
+      ellipse(300,400,140,140);
+      ellipse(500,400,140,140);
+      img = loadImage("dice.png");
+      image(img,240,345,img.width/2.5,img.height/2.5);
+      image(img,440,345,img.width/2.5,img.height/2.5);
+      //}
+  }
+  */
   
                      
                           
