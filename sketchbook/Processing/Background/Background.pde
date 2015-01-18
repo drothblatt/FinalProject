@@ -52,6 +52,7 @@ int nBuyIn;
   
 void mouseClicked(){
     if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 200 && mouseY <= 240){
+      fill(51);
       nOpponents = 2;
     } else if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 250 && mouseY <= 290){
       nOpponents = 3;
@@ -65,16 +66,7 @@ void mouseClicked(){
     System.out.println("Newest Variable");
     System.out.println(nOpponents);
   }
-  /*
-  else if (stage == 1){
-    if (mouseX <= 210 && mouseX >= 10 && mouseY <= 390 && mouseY >= 290){
-      stage = 0;
-      resetCube();
-      checkSolve = false;
-    }
-  }  
-}
-*/
+
   void draw(){
     /*
     int opponents = 6;
