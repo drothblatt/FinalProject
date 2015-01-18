@@ -100,7 +100,7 @@ public class Board{
 			belief = true;
 		    }
 		}else{
-		    System.out.println("Gambler" + i + Arrays.toString(Gamblers[i].getBid()));
+		    // System.out.println("Gambler" + i + Arrays.toString(Gamblers[i].getBid()));
 		}
 	    }
 	}
