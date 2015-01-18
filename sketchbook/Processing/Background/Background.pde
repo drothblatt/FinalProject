@@ -4,51 +4,72 @@ int nCash;
 int nDifficulty;
 int nBuyIn;
 
-  void setup() {
-    PImage bg, img;
-    PFont f1, f2;
+void setup(){
     size(800,800);
-    noStroke();
-    bg = loadImage("table.jpg");
+}
+
+void draw(){
+    PImage bg, img;
+    bg = loadImage("background.png");
     background(bg);
-                      
-    f1 = createFont("Arial",32,true);
-    textFont(f1);
-    textAlign(CENTER);
-    text("LIAR'S POKER!",400,75);
-    
-                      
-    f2 = createFont("Arial",16,true); 
-    textFont(f2);       
-    textAlign(CENTER);
-    text("Please Select Number Of Opponents:",400,180);
-    text("by Randy Higgins & David Rothblatt",400,100);
-    text("You",400,695);
-    
-    fill(255,102,0);
-    ellipse(400,600,140,140);
+    noStroke();
     img = loadImage("dice.png");
-    image(img,340,545,img.width/2.5,img.height/2.5); 
-
-    PFont font = createFont("arial",20);
     
-    textAlign(CENTER);
-    textSize(22);
-    strokeWeight(5);
-    int z = 200; // starting point for buttons (height)
-    for (int i = 0; i < 5; i++){
-      fill(14,19,158);
-      rect(300,z,200,40);
-      z += 50;
+    if (nOpponents == 0){
+      textAlign(CENTER);
+      textSize(22);
+      strokeWeight(5);
+      int z = 200; // starting point for buttons (height)
+      for (int i = 0; i < 5; i++){
+        fill(14,19,158);
+        rect(300,z,200,40);
+        z += 50;
+      }
+      fill(255);
+      text("Two", 400,230);
+      text("Three", 400,280);
+      text("Four", 400,330);
+      text("Five", 400,380);
+      text("Six", 400,430);
+      textSize(16);
+      text("Please Select Number Of Opponents:",400,180);
     }
-    fill(255);
-    text("Two", 400,230);
-    text("Three", 400,280);
-    text("Four", 400,330);
-    text("Five", 400,380);
-    text("Six", 400,430);
-  }
+   
+    else if (nDice == 0){
+      textAlign(CENTER);
+      textSize(22);
+      strokeWeight(5);
+      int z = 200; // starting point for buttons (height)
+      for (int i = 0; i < 4; i++){
+        fill(0,153,0);
+        rect(300,z,200,40);
+        z += 50;
+      }
+      fill(255);
+      text("Five", 400,230);
+      text("Six", 400,280);
+      text("Seven", 400,330);
+      text("Eight", 400,380);
+      textSize(16);
+      text("Please Select Number Of Dice Per Person:",400,180);
+    }
+    
+    else if (nDifficulty == 0){
+      textAlign(CENTER);
+      textSize(22);
+      strokeWeight(5);
+      fill(255,128,0);
+      rect(300,200,200,40);
+      rect(300,250,200,40);
+      fill(255);
+      text("Easy", 400,230);
+      text("Hard", 400,280);
+      textSize(16);
+      text("Please Select Difficulty",400,180);
+    }
+      
 
+}
   
 void mouseClicked(){
     if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 200 && mouseY <= 240){
@@ -67,7 +88,7 @@ void mouseClicked(){
     System.out.println(nOpponents);
   }
 
-  void draw(){
+ // void draw(){
     /*
     int opponents = 6;
     for (int i = 0; i < opponents; i++){
@@ -87,7 +108,7 @@ void mouseClicked(){
     }
     }
     */
-  }
+//p  }
   
     /*
   public void Two() {
