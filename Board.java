@@ -118,7 +118,31 @@ public class Board{
 	for(int i = 0; i < Gamblers.length; i++){
 	    Gamblers[i].roll();
 	}
-	System.out.println(believed(a%Gamblers.length));
+	int b = a;
+	for(int i = b; a - b < Gamblers.length; i++){
+	    a++;
+	    if(hasCash(i%Gamblers.length)){
+		try{
+		    Thread.sleep(r.nextInt(1500) + 500);
+		}catch(InterruptedException ex){
+		    Thread.currentThread().interrupt();
+		}
+		if((i%Gamblers.length) > 0){
+		    Gamblers[i%Gamblers.length].bidGod(Gamblers, highBid);
+		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
+			highBid = Gamblers[i%Gamblers.length].getBid();
+		    }
+		    System.out.println("Gambler "+ i%Gamblers.length +" calls " + Gamblers[i%Gamblers.length].wordBid());
+		}else{
+		    System.out.println("your dice:"+ Arrays.toString(Gamblers[0].getDice()));
+		    Gamblers[0].bid(highBid[0], highBid[1]);
+		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
+			highBid = Gamblers[0].getBid();
+		    }
+		    System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
+		}
+	    }
+	}
 	for(int i = a; believed(i%Gamblers.length); i++){
 	    a++;
 	    if(hasCash(i%Gamblers.length)){

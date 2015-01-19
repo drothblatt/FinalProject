@@ -63,9 +63,14 @@ David:
 Updated work on processing. Figured out how to add text and cool buttons (CP5) and researched how to utilize processing.
 
 2015-01-13
-Randy(Class)
+Randy(Class):
 Fixed  cycling error (I think)
 
 2015-01-14
-Randy(Class)
-Implemented hardMode? to choose between bidAI() and bidGod()
+Randy(Class):
+Implemented hardMode to choose between bidAI() and bidGod()
+
+2015-01-19
+Randy:
+Removed testers, added a round of betting before original to stop players starting with liar calls.
+
