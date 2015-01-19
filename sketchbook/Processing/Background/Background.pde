@@ -1,3 +1,5 @@
+//r
+
 int nOpponents;
 int nDice;
 int nCash;
@@ -67,10 +69,27 @@ void draw(){
       textSize(16);
       text("Please Select Difficulty",400,180);
     }
-      
-
+    int profiles = 0;
+    int x = 0;
+    int y = 0;
+    
+    if (nOpponents > 0 && nDifficulty >0 && nOpponents%2 == 0){
+      while (profiles < nOpponents){
+       fill(255,102,0);
+       ellipse(360-x,300+y,140,140);
+       ellipse(440+x,300+y,140,140);
+       image(img,300-x,245+y,img.width/2.5,img.height/2.5);
+       image(img,380+x,245+y,img.width/2.5,img.height/2.5);
+       x += 100;
+       y += 100;
+       profiles++;
+      }
+    }
+    
+    if (nOpponents > 0 && nOpponents%2 == 1){
+      System.out.println("cold noodles");
+    }
 }
-  
 void mouseClicked(){
     if (nOpponents == 0){
     choosingOpponents();
