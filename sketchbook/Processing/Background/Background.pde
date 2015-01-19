@@ -1,4 +1,3 @@
-//r
 
 int nOpponents;
 int nDice;
@@ -69,27 +68,72 @@ void draw(){
       textSize(16);
       text("Please Select Difficulty",400,180);
     }
-    int profiles = 0;
+    int profiles = 1;
     int x = 0;
     int y = 0;
     
     if (nOpponents > 0 && nDifficulty >0 && nOpponents%2 == 0){
-      while (profiles < nOpponents){
+      while (profiles <= nOpponents){
        fill(255,102,0);
-       ellipse(360-x,300+y,140,140);
-       ellipse(440+x,300+y,140,140);
-       image(img,300-x,245+y,img.width/2.5,img.height/2.5);
-       image(img,380+x,245+y,img.width/2.5,img.height/2.5);
-       x += 100;
-       y += 100;
-       profiles++;
+       ellipse(320-x,240+y,140,140);
+       ellipse(480+x,240+y,140,140);
+       image(img,260-x,185+y,img.width/2.5,img.height/2.5);
+       image(img,420+x,185+y,img.width/2.5,img.height/2.5);
+       x += 120;
+       y += 110;
+       profiles += 2;
+      }
+      int r = 360 + x;
+      int s = 130 + y;
+      while (profiles > 0){
+        fill(255);
+        textSize(13);
+        text("Gambler" /*+ profiles*/, r, s);
+        if (profiles > nOpponents/2 + 1){
+          r -= 120;
+          s -= 110; 
+        } else if (profiles > 0){
+          r += 120;
+          s += 110;
+        }
+        profiles--;
       }
     }
     
-    if (nOpponents > 0 && nOpponents%2 == 1){
-      System.out.println("cold noodles");
+    if (nOpponents > 0 && nDifficulty > 0 && nOpponents%2 == 1){
+       x = 120;
+       y = 80;
+       fill(255,102,0);
+       ellipse(400,200,140,140);
+       image(img,340,145,img.width/2.5,img.height/2.5);
+       profiles++;
+       while (profiles <= nOpponents){
+         fill(255,102,0); 
+         ellipse(400-x,240+y,140,140);
+         ellipse(400+x,240+y,140,140);
+         image(img,340-x,185+y,img.width/2.5,img.height/2.5);
+         image(img,340+x,185+y,img.width/2.5,img.height/2.5);
+         x += 120;
+         y += 110;
+         profiles += 2;
+      }
+      int r = 400 + x;
+      int s = 240 + y;
+      while (profiles > 0){
+        fill(255);
+        textSize(13);
+        text("Gambler" /*+ profiles*/, r, s);
+        r -= 120;
+        s -= 110; 
+        profiles--;
+        System.out.println("text written at: " + r + " " + s);
+        System.out.println("profiles left:" + profiles); 
+      }
     }
+    Game g = new Game(nOpponents,nDice,nDifficulty);
+    //g.playGame();
 }
+
 void mouseClicked(){
     if (nOpponents == 0){
     choosingOpponents();
@@ -139,45 +183,5 @@ void choosingDifficulty(){
     System.out.println("Difficulty:");
     System.out.println(nDifficulty);
 }
-  
-    
 
- // void draw(){
-    /*
-    int opponents = 6;
-    for (int i = 0; i < opponents; i++){
-    img = loadImage("dice.jpeg");
-    if (i == 0){
-      image(img,100,400,img.width/2,img.height/2);
-    }else if (i == 1){
-    image(img,200,300,img.width/2,img.height/2);
-    }else if(i == 2){
-    image(img,300,200, img.width/2,img.height/2);
-    }else if (i == 3){
-    image(img,400,200,img.width/2,img.height/2);
-    }else if (i == 4){
-    image(img,500,300,img.width/2,img.height/2);
-    }else if (i == 5){
-    image(img,600,400,img.width/2,img.height/2);
-    }
-    }
-    */
-//p  }
-  
-    /*
-  public void Two() {
-      //activateBy(cp5.RELEASE);
-      //if (isOn){
-      PImage img;
-      fill(255,102,0);
-      ellipse(300,400,140,140);
-      ellipse(500,400,140,140);
-      img = loadImage("dice.png");
-      image(img,240,345,img.width/2.5,img.height/2.5);
-      image(img,440,345,img.width/2.5,img.height/2.5);
-      //}
-  }
-  */
-  
-                     
                           
