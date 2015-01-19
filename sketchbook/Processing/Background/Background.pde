@@ -82,13 +82,13 @@ void draw(){
        x += 120;
        y += 110;
        profiles += 2;
-      }
+      }/*
       int r = 360 + x;
       int s = 130 + y;
       while (profiles > 0){
         fill(255);
         textSize(13);
-        text("Gambler" /*+ profiles*/, r, s);
+        text("Gambler" + profiles, r, s);
         if (profiles > nOpponents/2 + 1){
           r -= 120;
           s -= 110; 
@@ -98,8 +98,9 @@ void draw(){
         }
         profiles--;
       }
+      */
     }
-    
+
     if (nOpponents > 0 && nDifficulty > 0 && nOpponents%2 == 1){
        x = 120;
        y = 80;
@@ -116,30 +117,74 @@ void draw(){
          x += 120;
          y += 110;
          profiles += 2;
-      }
+      }/*
       int r = 400 + x;
       int s = 240 + y;
       while (profiles > 0){
         fill(255);
         textSize(13);
-        text("Gambler" /*+ profiles*/, r, s);
+        text("Gambler" + profiles, r, s);
         r -= 120;
         s -= 110; 
         profiles--;
         System.out.println("text written at: " + r + " " + s);
         System.out.println("profiles left:" + profiles); 
       }
+      */
     }
-    Game g = new Game(nOpponents,nDice,nDifficulty);
-    //g.playGame();
+    fill(255);
+    textSize(13);
+    textAlign(CENTER);
+    if (nDifficulty > 0){
+      if (nOpponents == 2){
+         text("Gambler 1:", 317.5, 325);
+         text("Gambler 2:", 480, 325);
+      } else if(nOpponents == 3){
+         text("Gambler 1:", 280, 410);
+         text("Gambler 2:", 400, 290);
+         text("Gambler 3:", 520, 410);
+      } else if(nOpponents == 4){
+         text("Gambler 1:", 200, 435);
+         text("Gambler 2:", 320, 325);
+         text("Gambler 3:", 480, 325);
+         text("Gambler 4:", 610, 435);
+      } else if(nOpponents == 5){
+         text("Gambler 1:", 160, 520);
+         text("Gambler 2:", 280, 410);
+         text("Gambler 3:", 400, 290);
+         text("Gambler 4:", 520, 410);
+         text("Gambler 5:", 640, 520);
+      } else if (nOpponents == 6){
+         text("Gambler 1:",  80, 545); 
+         text("Gambler 2:", 200, 435);
+         text("Gambler 3:", 320, 325);
+         text("Gambler 4:", 480, 325);
+         text("Gambler 5:", 610, 435);
+         text("Gambler 6:", 730, 545);
+      }
+         
+    }
+    //while (nOpponents != 0 && nDice != 0 && nDifficulty != 0){
+     Game g = new Game(nOpponents,nDice,nDifficulty);
+    //  g.playRound();
+    //}
+    //System.out.println(g.Gamblers[0].getDice());
+    int[] myDice = g.Gamblers[0].getDice();
+    String strDice = "[ ";
+    for (int i = 0; i < myDice.length; i++){
+      strDice += " " + myDice[i];
+    }
+    strDice += " ]";
+    textSize(15);
+    text(strDice,400,750);
 }
 
 void mouseClicked(){
     if (nOpponents == 0){
-    choosingOpponents();
+      choosingOpponents();
     } else if (nOpponents > 0 && nDice == 0){
       choosingDice();
-    } else{
+    } else if (nDifficulty == 0){
       choosingDifficulty();
     } 
 }
