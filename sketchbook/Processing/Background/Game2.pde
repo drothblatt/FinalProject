@@ -1,11 +1,11 @@
 import java.util.*;
-class Game{
+class Game2{
   Random r = new Random();
   public Player[] Gamblers;
   public int[] highBid;
   public double buyin;
 
-  public Game(int nOpponents, int nDice, int nDifficulty){
+  public Game2(int nOpponents, int nDice, int nDifficulty){
     highBid = new int[2];
     highBid[1] = 1;
     highBid[0] = 1;
@@ -90,7 +90,7 @@ class Game{
       highBid = Gamblers[i%Gamblers.length].getBid();
         }
         System.out.println("Gambler "+ i%Gamblers.length +" calls " + Gamblers[i%Gamblers.length].wordBid());
-        //text(Gamblers[i%Gamblers.length].wordBid(),100*i,650);
+        text(Gamblers[i%Gamblers.length].wordBid(),100*(i%Gamblers.length),650);
     }else{
         System.out.println("your dice:"+ Arrays.toString(Gamblers[0].getDice()));
         Gamblers[0].bid(highBid[0], highBid[1]);

@@ -4,6 +4,7 @@ int nDice;
 int nCash;
 int nDifficulty;
 int nBuyIn;
+boolean run = false;
 
 void setup(){
     size(800,800);
@@ -68,11 +69,20 @@ void draw(){
       textSize(16);
       text("Please Select Difficulty",400,180);
     }
+    makeProfiles();
+    Game4 g = new Game4(nOpponents,nDice,nDifficulty);
+    if (run){
+      g.display();
+    }
+}
+
+void makeProfiles() {
     int profiles = 1;
     int x = 0;
     int y = 0;
+    PImage img = loadImage("dice.png");
     
-    if (nOpponents > 0 && nDifficulty >0 && nOpponents%2 == 0){
+    if (nOpponents > 0 && nDifficulty > 0 && nOpponents%2 == 0){
       while (profiles <= nOpponents){
        fill(255,102,0);
        ellipse(320-x,240+y,140,140);
@@ -161,23 +171,34 @@ void draw(){
          text("Gambler 4:", 480, 325);
          text("Gambler 5:", 610, 435);
          text("Gambler 6:", 730, 545);
-      }
-         
+      }    
+    run = true;  
     }
-    //while (nOpponents != 0 && nDice != 0 && nDifficulty != 0){
-     Game g = new Game(nOpponents,nDice,nDifficulty);
-    //  g.playRound();
+}
+
+
+/*
+void display(){
+    Game4 g = new Game4(nOpponents,nDice,nDifficulty);
+    g.playRound();
+    for (int i = 1; i <= nOpponents; i++){
+      text("Gambler "+ i +" calls " + g.Gamblers[i].wordBid(), 100*i, 100);
+    }
+
+      
+      
     //}
     //System.out.println(g.Gamblers[0].getDice());
-    int[] myDice = g.Gamblers[0].getDice();
-    String strDice = "[ ";
-    for (int i = 0; i < myDice.length; i++){
-      strDice += " " + myDice[i];
-    }
-    strDice += " ]";
-    textSize(15);
-    text(strDice,400,750);
+    //int[] myDice = g.Gamblers[0].getDice();
+    //String strDice = "[ ";
+    //for (int i = 0; i < myDice.length; i++){
+    //  strDice += " " + myDice[i];
+    //}
+    //strDice += " ]";
+    //textSize(15);
+    //text(strDice,400,750);
 }
+*/
 
 void mouseClicked(){
     if (nOpponents == 0){
