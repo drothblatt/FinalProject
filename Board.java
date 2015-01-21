@@ -10,7 +10,7 @@ public class Board{
 	highBid[1] = 1;
 	highBid[0] = 1;
 	System.out.println("\nLIAR'S POKER v1.0" + "\nBy Randy Higgins & David Rothblatt"
-			   + "\nAPCS     Fall 2014-15     Mr. Konstantinovich \n" + ">>Let's Begin" );
+			   + "\nAPCS     Fall 2014-15     Mr. Konstantinovich \n" + "\n>> Let's Begin!" );
     }
 
     public void chooseOpponents(){
@@ -158,7 +158,7 @@ public class Board{
 		    }
 		    System.out.println(">> Gambler "+ i%Gamblers.length +" Calls: " + Gamblers[i%Gamblers.length].wordBid());
 		}else{
-		    System.out.println(">> Your Dice:"+ Arrays.toString(Gamblers[0].getDice()));
+		    System.out.println("\n>> Your Dice:"+ Arrays.toString(Gamblers[0].getDice()));
 		    Gamblers[0].bid(highBid[0], highBid[1]);
 		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 			highBid = Gamblers[0].getBid();
@@ -168,10 +168,10 @@ public class Board{
 	    }
 	}
 
-	System.out.println(">> Dice"+"\n"+">>   You: "+ Arrays.toString(Gamblers[0].getDice()));
+	System.out.println("\n>> Round Over... Results:\n>> Dice:"+"\n"+">>   You: "+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
 	    if(hasCash(i))
-		System.out.println(">>   Gambler"+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
+		System.out.println(">>   Gambler "+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
 	}
 
 	if(isLiar(a%Gamblers.length)){
@@ -191,12 +191,12 @@ public class Board{
 	}
 	highBid[0] = 1;
 	highBid[1] = 1;
-	System.out.println("Cash Update:\n" +">> You: $"+Gamblers[0].getCash());
+	System.out.println("\n>> Cash Update:\n" +">>   You: $"+Gamblers[0].getCash());
 	for(int i = 1; i < Gamblers.length; i++){
 	    if(hasCash(i))
-		System.out.println(">> Gambler"+i+": $"+Gamblers[i].getCash());
+		System.out.println(">>   Gambler"+i+": $"+Gamblers[i].getCash());
 	}
-	System.out.println("\n"+"\n");
+	System.out.println("\n");
     }
 
 
