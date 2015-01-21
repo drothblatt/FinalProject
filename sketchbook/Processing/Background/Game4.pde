@@ -6,8 +6,9 @@ class Game4{
     public double buyin;
 
     void display(){
+      playRound();
       for (int i = 1; i < Gamblers.length; i++){
-        text("Gambler "+ i +" calls " + Gamblers[i].wordBid(), 100, 100*i);
+        text(Gamblers[i].wordBid(), 100,100*i);
       }
     }
 
@@ -23,56 +24,33 @@ class Game4{
       }   
     }
   
-    public void playGame(){
-  highBid = new int[2];
-  highBid[1] = 1;
-  highBid[0] = 1;
-  Scanner s = new Scanner(System.in);
-  boolean winner = false;
-  while(winner == false){
-      if(hasCash(0)){
-    boolean others = false;
-    for(int i = 1; i < Gamblers.length; i++){
-        if(hasCash(i))
-      others = true;
-    }
-    if(others)
-        playRound();
-    else{
-        System.out.println("You win");
-        winner = true;
-    }
-      }else{
-    System.out.println("You loose");
-    winner = true;
-      }
-  }
-  System.out.println("Game over"+"\n"+"Play Again?(Y/N)");
-  String b = s.next();
-  if(b == "Y" || b == "y"){
-      playGame();
-  }
-    }
     public boolean believed(int a){
-  boolean belief = false;
-  for(int i = 0; i < Gamblers.length; i++){
-      if(i == a){
-    int d = 69;
-      }else{
-    if(Gamblers[i].getBid()[0] != -1){
-        if(hasCash(i)){
-      belief = true;
-        }
-    }else{
-        // System.out.println("Gambler" + i + Arrays.toString(Gamblers[i].getBid()));
-    }
+      boolean belief = false;
+      for(int i = 0; i < Gamblers.length; i++){
+         if(i == a){
+          int d = 69;
+         }else{
+          if(Gamblers[i].getBid()[0] != -1){
+            if(hasCash(i)){
+              belief = true;
+            }
+          }else{
+            // System.out.println("Gambler" + i + Arrays.toString(Gamblers[i].getBid()));
+          }
       }
+    }  
+    return belief;
   }
-  return belief;
-    }
+  
+  public void runOnce(){
+      for(int i = 0; i > Gamblers.length; i++){
+        Gamblers[i].reset();
+      }
+      highBid[0] = 1;
+      highBid[1] = 1;
     
     public void playRound(){
-  int a = r.nextInt(Gamblers.length) + 1;
+      int a = r.nextInt(Gamblers.length) + 1;
   for(int i = 0; i > Gamblers.length; i++){
       Gamblers[i].reset();
   }

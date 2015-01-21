@@ -1,5 +1,5 @@
 import java.util.*;
-public class Player{
+class Player{
     Random r = new Random();
     public double cash;
     public boolean hardMode = false;
@@ -15,10 +15,10 @@ public class Player{
   dice = new int[a];
     }
     public Player(int a, int difficulty){
-  this(a);
-  if (difficulty == 2){
-    hardMode = true;
-  }
+      this(a);
+      if (difficulty == 2){
+        hardMode = true;
+      }
     }
     public double getCash(){
   return cash;
@@ -77,30 +77,20 @@ public class Player{
   cash -= amount;
   other.addCash(amount);
     }
-    /*
+
     public int[] bid(){
-  int[] b = new int[2];
-  System.out.println("enter face value (bid '-1' for liar)");
+  int[] b = new int[2]; /*
+  System.out.println(">> Enter Face Value (Bid '-1' To Call Liar)");
   Scanner s = new Scanner(System.in);
   b[0]=s.nextInt();
   if(b[0] != -1){
-      System.out.println("choose number of dice");
+      System.out.println(">> Choose Number Of Dice");
       b[1] = s.nextInt();
   }
   bid = b;
-  return b;
-    }
-    */
-
-    public int[] bid(){
-  int[] b = new int[2];
-  System.out.println("enter face value (bid '-1' for liar)");
-  Scanner s = new Scanner(System.in);
-  b[0]=s.nextInt();
-  if(b[0] != -1){
-      System.out.println("choose number of dice");
-      b[1] = s.nextInt();
-  }
+  */
+  b[0] = 3;
+  b[1] = 3;
   bid = b;
   return b;
     }
@@ -120,7 +110,7 @@ public class Player{
   }
 }
   bid[0] = -1;
-  System.out.println("invalid bid,<liar called>");
+  System.out.println(">> Invalid Bid --> Liar Called");
   return false;
   
     }
@@ -241,4 +231,3 @@ public class Player{
   }
     }
 }
-
