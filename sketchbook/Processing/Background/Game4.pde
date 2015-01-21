@@ -48,6 +48,10 @@ class Game4{
       }
       highBid[0] = 1;
       highBid[1] = 1;
+      for(int i = 0; i < Gamblers.length; i++){
+        Gamblers[i].roll();
+      }
+      
     
     public void playRound(){
       int a = r.nextInt(Gamblers.length) + 1;
