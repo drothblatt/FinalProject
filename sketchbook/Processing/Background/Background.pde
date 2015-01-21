@@ -72,7 +72,9 @@ void draw(){
     makeProfiles();
     Game4 g = new Game4(nOpponents,nDice,nDifficulty);
     if (run){
+      System.out.println(nDifficulty);
       g.display();
+      makeProfiles();
     }
 }
 

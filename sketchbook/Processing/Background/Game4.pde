@@ -6,8 +6,7 @@ class Game4{
     public double buyin;
 
     void display(){
-      playRound();
-      for (int i = 0; i < Gamblers.length; i++){
+      for (int i = 1; i < Gamblers.length; i++){
         text("Gambler "+ i +" calls " + Gamblers[i].wordBid(), 100, 100*i);
       }
     }

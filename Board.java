@@ -9,8 +9,8 @@ public class Board{
 	highBid = new int[2];
 	highBid[1] = 1;
 	highBid[0] = 1;
-	System.out.println("\n\nLIAR'S POKER v1.0" + "\nBy Randy Higgins & David Rothblatt"
-			   + "\nAPCS     Fall 2014-15     Mr. Konstantinovich" );
+	System.out.println("\nLIAR'S POKER v1.0" + "\nBy Randy Higgins & David Rothblatt"
+			   + "\nAPCS     Fall 2014-15     Mr. Konstantinovich \n" + ">>Let's Begin" );
     }
 
     public void chooseOpponents(){
@@ -58,9 +58,9 @@ public class Board{
 	}
     }
     public void playGame(){
-	System.out.println("Select How Many Players You Want to Play Against (btwn 2 and 6)");
+	System.out.println(">> Select How Many Players You Want to Play Against (btwn 2 and 6)");
 	chooseOpponents();
-	System.out.println("Set The Buy-in For Each Round. Keep in Mind You Start With $500.00");
+	System.out.println(">> Set The Buy-in For Each Round. Keep in Mind You Start With $500.00");
 	chooseBuyIn();
 	highBid = new int[2];
 	highBid[1] = 1;
@@ -85,7 +85,7 @@ public class Board{
 		winner = true;
 	    }
 	}
-	System.out.println(">>Game over..."+"\n"+"Play Again? (Y/N)");
+	System.out.println(">> Game over..."+"\n"+"Play Again? (Y/N)");
 	String b = s.next();
 	if(b == "Y" || b == "y"){
 	    playGame();
@@ -101,8 +101,6 @@ public class Board{
 		    if(hasCash(i)){
 			belief = true;
 		    }
-		}else{
-		    // System.out.println("Gambler" + i + Arrays.toString(Gamblers[i].getBid()));
 		}
 	    }
 	}
@@ -116,7 +114,7 @@ public class Board{
 	}
 	highBid[0] = 1;
 	highBid[1] = 1;
-	System.out.println("-----------\n" + "Next Round");
+	System.out.println("-----------\n" + "Next Round:");
 	for(int i = 0; i < Gamblers.length; i++){
 	    Gamblers[i].roll();
 	}
@@ -134,14 +132,14 @@ public class Board{
 		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 			highBid = Gamblers[i%Gamblers.length].getBid();
 		    }
-		    System.out.println("Gambler "+ i%Gamblers.length +" calls " + Gamblers[i%Gamblers.length].wordBid());
+		    System.out.println(">> Gambler "+ i%Gamblers.length +" Calls: " + Gamblers[i%Gamblers.length].wordBid());
 		}else{
-		    System.out.println("your dice:"+ Arrays.toString(Gamblers[0].getDice()));
+		    System.out.println(">> Your Dice:"+ Arrays.toString(Gamblers[0].getDice()));
 		    Gamblers[0].bid(highBid[0], highBid[1]);
 		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 			highBid = Gamblers[0].getBid();
 		    }
-		    System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
+		    System.out.println(">> You Call: " + Gamblers[i%Gamblers.length].wordBid());
 		}
 	    }
 	}
@@ -158,22 +156,22 @@ public class Board{
 		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 			highBid = Gamblers[i%Gamblers.length].getBid();
 		    }
-		    System.out.println("Gambler "+ i%Gamblers.length +" calls " + Gamblers[i%Gamblers.length].wordBid());
+		    System.out.println(">> Gambler "+ i%Gamblers.length +" Calls: " + Gamblers[i%Gamblers.length].wordBid());
 		}else{
-		    System.out.println("your dice:"+ Arrays.toString(Gamblers[0].getDice()));
+		    System.out.println(">> Your Dice:"+ Arrays.toString(Gamblers[0].getDice()));
 		    Gamblers[0].bid(highBid[0], highBid[1]);
 		    if(Gamblers[i%Gamblers.length].getBid()[0] != -1){
 			highBid = Gamblers[0].getBid();
 		    }
-		    System.out.println("you call " + Gamblers[i%Gamblers.length].wordBid());
+		    System.out.println(">> You Call: " + Gamblers[i%Gamblers.length].wordBid());
 		}
 	    }
 	}
 
-	System.out.println("Dice"+"\n"+"You: "+ Arrays.toString(Gamblers[0].getDice()));
+	System.out.println(">> Dice"+"\n"+">>   You: "+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
 	    if(hasCash(i))
-		System.out.println("Gambler"+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
+		System.out.println(">>   Gambler"+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
 	}
 
 	if(isLiar(a%Gamblers.length)){
@@ -193,10 +191,10 @@ public class Board{
 	}
 	highBid[0] = 1;
 	highBid[1] = 1;
-	System.out.println("You: $"+Gamblers[0].getCash());
+	System.out.println("Cash Update:\n" +">> You: $"+Gamblers[0].getCash());
 	for(int i = 1; i < Gamblers.length; i++){
 	    if(hasCash(i))
-		System.out.println("Gambler"+i+": $"+Gamblers[i].getCash());
+		System.out.println(">> Gambler"+i+": $"+Gamblers[i].getCash());
 	}
 	System.out.println("\n"+"\n");
     }
