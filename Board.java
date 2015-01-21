@@ -9,7 +9,7 @@ public class Board{
 	highBid = new int[2];
 	highBid[1] = 1;
 	highBid[0] = 1;
-	System.out.println("LIAR'S POKER v1.0" + "\nBy Randy Higgins & David Rothblatt"			   
+	System.out.println("\n\nLIAR'S POKER v1.0" + "\nBy Randy Higgins & David Rothblatt"
 			   + "\nAPCS     Fall 2014-15     Mr. Konstantinovich" );
     }
 
@@ -19,20 +19,20 @@ public class Board{
 	    int opponents = s.nextInt();
 	    if (2 <= opponents && opponents <= 6){
 		Gamblers = new Player[opponents+1];
-		System.out.println("How Many Dice Per Player? (5-8 recomended)");
+		System.out.println(">> How Many Dice Per Player? (5-8 recomended)");
 		int f = s.nextInt();
-		System.out.println("Hard Mode On? (Y/N)");
+		System.out.println(">> Hard Mode On? (Y/N)");
 		String next = s.next();
 		boolean hardMode = (next == "Y" || next == "y" || next == "yes" || next == "Yes");
 		for(int i = 0; i < Gamblers.length; i++){
 		    Gamblers[i] = new Player(f, hardMode);
 		}
 	    } else{
-		System.out.println("Invalid Number. Choose Between 2 and 6.");
+		System.out.println(">> Invalid Number. Choose Between 2 and 6.");
 		chooseOpponents();
 	    }
 	} else{
-	    System.out.println("Oops, Problem. Must Input Integer.");
+	    System.out.println(">> Oops, Problem. Must Input Integer.");
 	    if (s.hasNextLine()){	
 		chooseOpponents();
 	    }
@@ -46,11 +46,11 @@ public class Board{
 	    if (input > 0 && input <= 500){
 		buyin = input;
 	    } else{
-		System.out.println("Invalid Double. Keep It Positive And Below $500.00"); 
+		System.out.println(">> Invalid Double. Keep It Positive And Below $500.00"); 
 		chooseBuyIn();
 	    }
 	} else{
-	    System.out.println("Oops, Something Went Wrong. " + 
+	    System.out.println(">> Oops, Something Went Wrong. " + 
 			       "Note That Buy-In Must Be An Integer Or Double.");
 	    if (s.hasNextLine()){
 		chooseBuyIn();
@@ -77,15 +77,15 @@ public class Board{
 		if(others)
 		    playRound();
 		else{
-		    System.out.println("You win");
+		    System.out.println(">> You Win!!!");
 		    winner = true;
 		}
 	    }else{
-		System.out.println("You loose");
+		System.out.println(">> You Lose...");
 		winner = true;
 	    }
 	}
-	System.out.println("Game over"+"\n"+"Play Again?(Y/N)");
+	System.out.println(">>Game over..."+"\n"+"Play Again? (Y/N)");
 	String b = s.next();
 	if(b == "Y" || b == "y"){
 	    playGame();
@@ -116,7 +116,7 @@ public class Board{
 	}
 	highBid[0] = 1;
 	highBid[1] = 1;
-	System.out.println("next round");
+	System.out.println("-----------\n" + "Next Round");
 	for(int i = 0; i < Gamblers.length; i++){
 	    Gamblers[i].roll();
 	}
