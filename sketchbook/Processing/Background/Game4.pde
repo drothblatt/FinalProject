@@ -51,7 +51,7 @@ class Game4{
       for(int i = 0; i < Gamblers.length; i++){
         Gamblers[i].roll();
       }
-      
+  }
     
     public void playRound(){
       int a = r.nextInt(Gamblers.length) + 1;
