@@ -94,5 +94,5 @@ Randy: Removed testers, added a round of betting before original to stop players
 David: Tried to figure out how to utilize the Game class and turn the java code into effective processing code. Had a lot of issues with this. Nothing seemed to be working. Hopes of a successful processing aspect of the project seem unlikely at this point. 
 
 2015-01-20:
-David: Looked at 
+David: Altered the way in which the Scanners worked so that the user would have a better experience when playing the game in the terminal. Also looked to try and salvage processing, to no avail :(. 
 
