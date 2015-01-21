@@ -51,10 +51,12 @@ Randy(Class):
 Added dumb bidding method, bidDumb().
 Removed checks from playRound().
 Added dollar sign to String that returns cash amount b/c it's cash
+David(Class):
+Looked at the possibilty of having this done in processing. Explored its features and discussed with neighbors. 
 
 2015-01-09:
 Randy(Class): Worked on getting rid of players with no cash
-David(Class): Worked on 
+David(Class): Worked on establishing a cool poker-table type background and cool profiles (circles with dice) to symbolize each player. 
 
 2015-01-10:
 Randy:
@@ -62,9 +64,16 @@ Removed broke players from rounds.
 David: 
 Updated work on processing. Figured out how to add text and cool buttons (CP5) and researched how to utilize processing.
 
+2015-01-11:
+David: Updated processing such that the setup also included text and buttons. still working out kinks of the buttons. Worked with CP5 (scratched it later because of poor documentation and overall confusion with it).
+
+2015-01-12:
+David: More attempts at fixing the setup using CP5. Worked on buttons and overall background. 
+
 2015-01-13
 Randy(Class):
 Fixed  cycling error (I think)
+David: Decided to avoid 
 
 2015-01-14
 Randy(Class):
