@@ -4,6 +4,8 @@ public class Board{
     public Player[] Gamblers;
     public int[] highBid;
     public double buyin;
+    public int d;
+    public boolean hardMode;
 
     public Board(){
 	highBid = new int[2];
@@ -19,6 +21,7 @@ public class Board{
 	    int opponents = s.nextInt();
 	    if (2 <= opponents && opponents <= 6){
 		Gamblers = new Player[opponents+1];
+		/*
 		System.out.println(">> How Many Dice Per Player? (5-8 recomended)");
 		int f = s.nextInt();
 		System.out.println(">> Hard Mode On? (Y/N)");
@@ -27,6 +30,7 @@ public class Board{
 		for(int i = 0; i < Gamblers.length; i++){
 		    Gamblers[i] = new Player(f, hardMode);
 		}
+		*/
 	    } else{
 		System.out.println(">> Invalid Number. Choose Between 2 and 6.");
 		chooseOpponents();
@@ -36,6 +40,35 @@ public class Board{
 	    if (s.hasNextLine()){	
 		chooseOpponents();
 	    }
+	}
+    }
+
+    public void chooseDice(){
+	Scanner s = new Scanner(System.in);
+	if (s.hasNextInt()){
+	    int y = s.nextInt();
+	    if (y >= 5 && y <= 8){
+		d = y;
+	    } else{
+		System.out.println(">> Invalid Number. Choose Between 5 and 8.");
+		chooseDice();
+	    }
+	} else{
+	    System.out.println(">> Oops, Problem. Must Input Integer.");
+	    if (s.hasNextLine()){	
+		chooseDice();
+	    }
+	}
+    }
+
+    public void chooseMode(){
+	Scanner s = new Scanner(System.in);
+	if (s.hasNextLine()){
+	    String next = s.nextLine();
+	    hardMode = (next == "Y" || next == "y" || next == "yes" || next == "Yes");
+	} else{
+	    System.out.println(">> Oops, Problem. Must Answer. Not Case Sensitive. ");
+	    chooseMode();
 	}
     }
     
@@ -60,8 +93,18 @@ public class Board{
     public void playGame(){
 	System.out.println(">> Select How Many Players You Want to Play Against (btwn 2 and 6)");
 	chooseOpponents();
+	System.out.println(">> Select How Many Dice You Want Per Player (btwn 5 and 8)");
+	chooseDice();
+	System.out.println(">> Would You Like To Play The Harder Mode?" + 
+			   "\n>> (Type Y or Yes to answer yes. Otherwise, We Will Assume You Choose No.)");
+	chooseMode();
 	System.out.println(">> Set The Buy-in For Each Round. Keep in Mind You Start With $500.00");
 	chooseBuyIn();
+
+	for(int i = 0; i < Gamblers.length; i++){
+	    Gamblers[i] = new Player(d, hardMode);
+	}
+
 	highBid = new int[2];
 	highBid[1] = 1;
 	highBid[0] = 1;
