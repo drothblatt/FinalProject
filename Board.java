@@ -9,6 +9,8 @@ public class Board{
 	highBid = new int[2];
 	highBid[1] = 1;
 	highBid[0] = 1;
+	System.out.println("LIAR'S POKER v1.0" + "\nBy Randy Higgins & David Rothblatt"			   
+			   + "\nAPCS     Fall 2014-15     Mr. Konstantinovich" );
     }
 
     public void chooseOpponents(){
@@ -17,9 +19,9 @@ public class Board{
 	    int opponents = s.nextInt();
 	    if (2 <= opponents && opponents <= 6){
 		Gamblers = new Player[opponents+1];
-		System.out.println("how many dice per player? (5-8 recomended)");
+		System.out.println("How Many Dice Per Player? (5-8 recomended)");
 		int f = s.nextInt();
-		System.out.println("Hard mode on?(Y/N)");
+		System.out.println("Hard Mode On? (Y/N)");
 		String next = s.next();
 		boolean hardMode = (next == "Y" || next == "y" || next == "yes" || next == "Yes");
 		for(int i = 0; i < Gamblers.length; i++){
