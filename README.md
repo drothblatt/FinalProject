@@ -3,6 +3,9 @@ FinalProject
 
 Attempting to recreate Liar's Poker/Liar's Dice. Final version should include: ability to adjust numbers of AI's and dice, funtional AIs in addition to basic LIars Poker/Liars Dice game.
 
+*** WORKING VERSION: FULLY-FUNCTIONAL, JAVA-BASED LIAR'S POKER GAME TO BE PLAYED IN THE TERMINAL (USE Tester.java).
+* Set-up and certain aspects of processing also should be working. 
+
 Logs
 
 2014-12-23:
