@@ -67,13 +67,13 @@ void draw(){
       text("Easy", 400,230);
       text("Hard", 400,280);
       textSize(16);
-      text("Please Select Difficulty",400,180);
+      text("Please Select Difficulty:",400,180);
     }
     makeProfiles();
-    Game4 g = new Game4(nOpponents,nDice,nDifficulty);
+    //Game4 g = new Game4(nOpponents,nDice,nDifficulty);
     if (run){
       System.out.println(nDifficulty);
-      g.display();
+      //g.display();
       makeProfiles();
     }
 }
@@ -87,66 +87,47 @@ void makeProfiles() {
     if (nOpponents > 0 && nDifficulty > 0 && nOpponents%2 == 0){
       while (profiles <= nOpponents){
        fill(255,102,0);
-       ellipse(320-x,240+y,140,140);
-       ellipse(480+x,240+y,140,140);
-       image(img,260-x,185+y,img.width/2.5,img.height/2.5);
-       image(img,420+x,185+y,img.width/2.5,img.height/2.5);
-       x += 120;
-       y += 110;
+       ellipse(337.5-x,200,100,100);
+       ellipse(462.5+x,200,100,100);
+       image(img,290-x,155,img.width/3.5,img.height/3.5);
+       image(img,415+x,155,img.width/3.5,img.height/3.5);
+       x += 125;
        profiles += 2;
-      }/*
-      int r = 360 + x;
-      int s = 130 + y;
-      while (profiles > 0){
-        fill(255);
-        textSize(13);
-        text("Gambler" + profiles, r, s);
-        if (profiles > nOpponents/2 + 1){
-          r -= 120;
-          s -= 110; 
-        } else if (profiles > 0){
-          r += 120;
-          s += 110;
-        }
-        profiles--;
       }
-      */
+      float pos = 337.5 - x + 125; // move back to second to last pos. 
+      fill(255);
+      for (int i = 1; i <= nOpponents; i++){
+        text("Gambler " + i + ":", pos, 270);
+        pos += 125;
+      }
     }
 
     if (nOpponents > 0 && nDifficulty > 0 && nOpponents%2 == 1){
-       x = 120;
-       y = 80;
+       x = 125;
        fill(255,102,0);
-       ellipse(400,200,140,140);
-       image(img,340,145,img.width/2.5,img.height/2.5);
+       ellipse(400,200,100,100);
+       image(img,352.5,155,img.width/3.5,img.height/3.5);
        profiles++;
        while (profiles <= nOpponents){
          fill(255,102,0); 
-         ellipse(400-x,240+y,140,140);
-         ellipse(400+x,240+y,140,140);
-         image(img,340-x,185+y,img.width/2.5,img.height/2.5);
-         image(img,340+x,185+y,img.width/2.5,img.height/2.5);
-         x += 120;
-         y += 110;
+         ellipse(400-x,200,100,100);
+         ellipse(400+x,200,100,100);
+         image(img,352.5-x,155,img.width/3.5,img.height/3.5);
+         image(img,352.5+x,155,img.width/3.5,img.height/3.5);
+         x += 125;
          profiles += 2;
-      }/*
-      int r = 400 + x;
-      int s = 240 + y;
-      while (profiles > 0){
-        fill(255);
-        textSize(13);
-        text("Gambler" + profiles, r, s);
-        r -= 120;
-        s -= 110; 
-        profiles--;
-        System.out.println("text written at: " + r + " " + s);
-        System.out.println("profiles left:" + profiles); 
       }
-      */
+      float pos = 400 - x + 125; // move back to second to last x pos. 
+      fill(255);
+      for (int i = 1; i <= nOpponents; i++){
+        text("Gambler " + i + ":", pos, 270);
+        pos += 125;
+      }
     }
     fill(255);
     textSize(13);
     textAlign(CENTER);
+    /*
     if (nDifficulty > 0){
       if (nOpponents == 2){
          text("Gambler 1:", 317.5, 325);
@@ -174,8 +155,10 @@ void makeProfiles() {
          text("Gambler 5:", 610, 435);
          text("Gambler 6:", 730, 545);
       }    
+      
     run = true;  
     }
+    */
 }
 
 
