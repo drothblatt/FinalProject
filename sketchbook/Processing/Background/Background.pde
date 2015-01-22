@@ -4,6 +4,7 @@ int nDice;
 int nCash;
 int nDifficulty;
 int nBuyIn;
+float textPos;
 boolean run = false;
 
 void setup(){
@@ -69,12 +70,10 @@ void draw(){
       textSize(16);
       text("Please Select Difficulty:",400,180);
     }
-    makeProfiles();
-    //Game4 g = new Game4(nOpponents,nDice,nDifficulty);
+    Game4 g = new Game4(nOpponents,nDice,nDifficulty,textPos);
     if (run){
-      System.out.println(nDifficulty);
-      //g.display();
-      makeProfiles();
+        makeProfiles();
+        g.display(); 
     }
 }
 
@@ -94,7 +93,8 @@ void makeProfiles() {
        x += 125;
        profiles += 2;
       }
-      float pos = 337.5 - x + 125; // move back to second to last pos. 
+      float pos = 337.5 - x + 125; // move back to second to last pos.
+      textPos = pos;  
       fill(255);
       for (int i = 1; i <= nOpponents; i++){
         text("Gambler " + i + ":", pos, 270);
@@ -118,6 +118,7 @@ void makeProfiles() {
          profiles += 2;
       }
       float pos = 400 - x + 125; // move back to second to last x pos. 
+      textPos = pos;
       fill(255);
       for (int i = 1; i <= nOpponents; i++){
         text("Gambler " + i + ":", pos, 270);
@@ -127,63 +128,7 @@ void makeProfiles() {
     fill(255);
     textSize(13);
     textAlign(CENTER);
-    /*
-    if (nDifficulty > 0){
-      if (nOpponents == 2){
-         text("Gambler 1:", 317.5, 325);
-         text("Gambler 2:", 480, 325);
-      } else if(nOpponents == 3){
-         text("Gambler 1:", 280, 410);
-         text("Gambler 2:", 400, 290);
-         text("Gambler 3:", 520, 410);
-      } else if(nOpponents == 4){
-         text("Gambler 1:", 200, 435);
-         text("Gambler 2:", 320, 325);
-         text("Gambler 3:", 480, 325);
-         text("Gambler 4:", 610, 435);
-      } else if(nOpponents == 5){
-         text("Gambler 1:", 160, 520);
-         text("Gambler 2:", 280, 410);
-         text("Gambler 3:", 400, 290);
-         text("Gambler 4:", 520, 410);
-         text("Gambler 5:", 640, 520);
-      } else if (nOpponents == 6){
-         text("Gambler 1:",  80, 545); 
-         text("Gambler 2:", 200, 435);
-         text("Gambler 3:", 320, 325);
-         text("Gambler 4:", 480, 325);
-         text("Gambler 5:", 610, 435);
-         text("Gambler 6:", 730, 545);
-      }    
-      
-    run = true;  
-    }
-    */
 }
-
-
-/*
-void display(){
-    Game4 g = new Game4(nOpponents,nDice,nDifficulty);
-    g.playRound();
-    for (int i = 1; i <= nOpponents; i++){
-      text("Gambler "+ i +" calls " + g.Gamblers[i].wordBid(), 100*i, 100);
-    }
-
-      
-      
-    //}
-    //System.out.println(g.Gamblers[0].getDice());
-    //int[] myDice = g.Gamblers[0].getDice();
-    //String strDice = "[ ";
-    //for (int i = 0; i < myDice.length; i++){
-    //  strDice += " " + myDice[i];
-    //}
-    //strDice += " ]";
-    //textSize(15);
-    //text(strDice,400,750);
-}
-*/
 
 void mouseClicked(){
     if (nOpponents == 0){
@@ -231,6 +176,7 @@ void choosingDifficulty(){
     } else if(mouseX >= 300 &&  mouseX <= 500 && mouseY >= 250 && mouseY <= 290){
       nDifficulty = 2;
     } 
+    run = true;
     System.out.println("Difficulty:");
     System.out.println(nDifficulty);
 }
