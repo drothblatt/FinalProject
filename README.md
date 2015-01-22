@@ -98,3 +98,5 @@ Implemented hardMode to choose between bidAI() and bidGod()
 2015-01-20:
 *David: Altered the way in which the Scanners worked so that the user would have a better experience when playing the game in the terminal. Also looked to try and salvage processing, to no avail :(. 
 
+2015-01-21:
+*David: Edited the terminal-based version of the game. Added a print statement that let user know who started round. Made other aesthetic changes. Made significant efforts at processing. Changed set-up. Tried to fix Game4 file so that it would work. Made progress, but could not figure it out. 
