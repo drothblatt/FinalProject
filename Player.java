@@ -78,11 +78,11 @@ public class Player{
 
     public int[] bid(){
 	int[] b = new int[2];
-	System.out.println("enter face value (bid '-1' for liar)");
+	System.out.println(">> Enter Face Value (Bid '-1' For Liar)");
 	Scanner s = new Scanner(System.in);
 	b[0]=s.nextInt();
 	if(b[0] != -1){
-	    System.out.println("choose number of dice");
+	    System.out.println(">> Choose Number Of Dice");
 	    b[1] = s.nextInt();
 	}
 	bid = b;
@@ -104,7 +104,7 @@ public class Player{
 	    }
 	}
 	bid[0] = -1;
-	System.out.println("invalid bid,<liar called>");
+	System.out.println(">> Invalid Bid,<Liar Called>");
 	return false;
 	
     }

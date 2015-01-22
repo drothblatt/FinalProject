@@ -21,16 +21,6 @@ public class Board{
 	    int opponents = s.nextInt();
 	    if (2 <= opponents && opponents <= 6){
 		Gamblers = new Player[opponents+1];
-		/*
-		System.out.println(">> How Many Dice Per Player? (5-8 recomended)");
-		int f = s.nextInt();
-		System.out.println(">> Hard Mode On? (Y/N)");
-		String next = s.next();
-		boolean hardMode = (next == "Y" || next == "y" || next == "yes" || next == "Yes");
-		for(int i = 0; i < Gamblers.length; i++){
-		    Gamblers[i] = new Player(f, hardMode);
-		}
-		*/
 	    } else{
 		System.out.println(">> Invalid Number. Choose Between 2 and 6.");
 		chooseOpponents();
@@ -158,6 +148,11 @@ public class Board{
 	highBid[0] = 1;
 	highBid[1] = 1;
 	System.out.println("-----------\n" + "Next Round:");
+	if (a < Gamblers.length){
+	    System.out.println("\n>> Gambler " + a + " Starts\n");
+	} else if (a == Gamblers.length){
+	    System.out.println("\n>> You Start.\n ");
+	}
 	for(int i = 0; i < Gamblers.length; i++){
 	    Gamblers[i].roll();
 	}
@@ -211,10 +206,10 @@ public class Board{
 	    }
 	}
 
-	System.out.println("\n>> Round Over... Results:\n>> Dice:"+"\n"+">>   You: "+ Arrays.toString(Gamblers[0].getDice()));
+	System.out.println("\n>> Round Over... Results:\n>> Dice:"+"\n"+">>>>   You: "+ Arrays.toString(Gamblers[0].getDice()));
 	for(int i = 1; i < Gamblers.length; i++){
 	    if(hasCash(i))
-		System.out.println(">>   Gambler "+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
+		System.out.println(">>>>   Gambler "+ i +": "+ Arrays.toString(Gamblers[i].getDice()));
 	}
 
 	if(isLiar(a%Gamblers.length)){
@@ -234,10 +229,10 @@ public class Board{
 	}
 	highBid[0] = 1;
 	highBid[1] = 1;
-	System.out.println("\n>> Cash Update:\n" +">>   You: $"+Gamblers[0].getCash());
+	System.out.println("\n>> Cash Update:\n" +">>>>   You: $"+Gamblers[0].getCash());
 	for(int i = 1; i < Gamblers.length; i++){
 	    if(hasCash(i))
-		System.out.println(">>   Gambler"+i+": $"+Gamblers[i].getCash());
+		System.out.println(">>>>   Gambler"+i+": $"+Gamblers[i].getCash());
 	}
 	System.out.println("\n");
     }
